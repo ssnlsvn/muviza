@@ -277,7 +277,6 @@ h2.titulo-principal {
 }
 
 .campo-fila {
-  dir: ltr;
   display: flex;
   gap: 12px;
 }
@@ -329,4 +328,70 @@ input, select {
   color: var(--color-titulo);
   text-decoration: none;
   font-weight: bold;
+}
+
+/* ========================================== */
+/* DISEÑO RESPONSIVE PERFECTO PARA MÓVILES    */
+/* ========================================== */
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 8px;
+  }
+
+  .ventana-retro {
+    max-width: 100% !important;
+    border-radius: 8px;
+  }
+
+  .contenido-formulario {
+    padding: 15px 15px !important;
+  }
+
+  /* Apilar el panel superior (temas y modo oscuro) si es muy angosto */
+  .panel-superior {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .selector-temas-container {
+    justify-content: center;
+  }
+
+  .switch-modo-oscuro {
+    justify-content: center;
+  }
+
+  /* Romper el grid de la foto y los campos para que bajen en orden vertical */
+  .grid-formulario {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .seccion-foto {
+    width: 100%;
+    align-items: center;
+  }
+
+  .caja-foto {
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Apilar las filas de inputs dobles (ej. Nombre y @) uno debajo del otro */
+  .campo-fila {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  input, select {
+    width: 100% !important;
+  }
+
+  h2.titulo-principal {
+    font-size: 1.4rem !important;
+    margin-bottom: 15px;
+  }
 }
