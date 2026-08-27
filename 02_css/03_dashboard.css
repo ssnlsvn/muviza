@@ -1,0 +1,256 @@
+/* ========================================== */
+/* ESTILOS ESPECÍFICOS DEL DASHBOARD          */
+/* ========================================== */
+.app-layout {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-principal);
+  color: var(--color-texto);
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar Lateral */
+.sidebar-retro {
+  width: 240px;
+  background-color: var(--bg-tarjeta);
+  border-right: 2px solid var(--color-borde);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-titulo);
+  margin-bottom: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.nav-item {
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--color-texto);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover, .nav-item.activo {
+  background-color: var(--color-acento);
+  color: var(--color-btn-texto);
+}
+
+.sidebar-footer {
+  border-top: 1px solid var(--color-borde);
+  padding-top: 15px;
+}
+
+.btn-salir {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--color-borde);
+  color: var(--color-titulo);
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.btn-salir:hover {
+  background-color: var(--color-titulo);
+  color: var(--color-btn-texto);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+/* Header & Perfil Card */
+.header-dashboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  background-color: var(--bg-tarjeta);
+  padding: 15px 25px;
+  border-radius: 12px;
+  border: 2px solid var(--color-borde);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.panel-superior-dashboard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-perfil-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--bg-principal);
+  padding: 8px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--color-borde);
+}
+
+.avatar-container {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--color-borde);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.avatar-fallback {
+  font-size: 1.5rem;
+}
+
+.info-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.linea-nombre-handle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.linea-nombre-handle h3 {
+  font-size: 0.95rem;
+  color: var(--color-titulo);
+  margin: 0;
+}
+
+.badge-handle {
+  font-size: 0.75rem;
+  background: var(--color-acento);
+  color: var(--color-btn-texto);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.detalle-carrera {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.badge-id {
+  font-size: 0.7rem;
+  font-family: monospace;
+  opacity: 0.6;
+}
+
+.btn-editar-handle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.btn-editar-handle:hover {
+  opacity: 1;
+}
+
+/* Vista Contenedor */
+.vista-contenedor {
+  flex: 1;
+}
+
+.tarjeta-modulo {
+  background-color: var(--bg-tarjeta);
+  border: 2px solid var(--color-borde);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+/* ========================================== */
+/* MODAL DE EDICIÓN DE PERFIL                 */
+/* ========================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background-color: var(--bg-tarjeta);
+  border: 2px solid var(--color-borde);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 450px;
+  padding: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-contenido h3 {
+  color: var(--color-titulo);
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.modal-botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-guardar-modal {
+  flex: 1;
+  background-color: var(--color-btn-fondo);
+  color: var(--color-btn-texto);
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-cancelar-modal {
+  flex: 1;
+  background-color: var(--bg-principal);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}

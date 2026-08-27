@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Estudiante - Lumis</title>
+    <!-- Estilos unificados en la raíz -->
+    <link rel="stylesheet" href="02_css/01_estilos_generales.css">
+    <link rel="stylesheet" href="02_css/02_autenticacion.css">
+</head>
+<body>
+
+    <div class="ventana-retro">
+        <!-- Barra superior tipo app retro -->
+        <div class="barra-titulo">
+            <div class="puntos-ventana">
+                <span class="punto punto-rojo"></span>
+                <span class="punto punto-amarillo"></span>
+                <span class="punto punto-verde"></span>
+            </div>
+            <span class="titulo-exe">=^.^=.exe</span>
+            <div></div>
+        </div>
+
+        <div class="contenido-formulario">
+            
+            <!-- Panel superior: Temas y Modo Oscuro -->
+            <div class="panel-superior">
+                <div class="selector-temas-container">
+                    <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-titulo);">Tema:</span>
+                    <div class="circulo-tema activo" data-tema="mint" title="Mint Choco" style="background-color: #8ab6b1;"></div>
+                    <div class="circulo-tema" data-tema="waterfall" title="Waterfall" style="background-color: #81a1c1;"></div>
+                    <div class="circulo-tema" data-tema="prim" title="Prim" style="background-color: #f3c2d3;"></div>
+                </div>
+                
+                <button type="button" id="btnModoOscuro" class="switch-modo-oscuro">
+                    <span id="iconoModo">🌙</span> <span id="textoModo">Modo Oscuro: OFF</span>
+                </button>
+            </div>
+
+            <h2 class="titulo-principal">Nuevo Estudiante</h2>
+
+            <!-- Botón de Google -->
+            <button type="button" id="btnGoogle" class="btn-google">
+                Registrarse con Google
+            </button>
+
+            <div class="divisor"><span>o manualmente</span></div>
+
+            <form id="formRegistro">
+                <div class="grid-formulario">
+                    
+                    <!-- Columna Izquierda: Foto -->
+                    <div class="seccion-foto">
+                        <div class="caja-foto" id="cajaFoto">
+                            📷 <br><span>Sube tu foto</span>
+                        </div>
+                        <input type="file" id="inputFoto" accept="image/*" style="display: none;">
+                        <button type="button" class="btn-foto" onclick="document.getElementById('inputFoto').click();">Elegir Foto</button>
+                    </div>
+
+                    <!-- Columna Derecha: Campos -->
+                    <div class="campos-derecha">
+                        <div class="campo-fila">
+                            <div class="campo-grupo">
+                                <label>Nombre/Apodo</label>
+                                <input type="text" id="nombre" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="campo-grupo">
+                                <label>Usuario (@) <span style="font-size: 0.6rem; opacity: 0.7;">(c/30d)</span></label>
+                                <input type="text" id="handle" placeholder="@usuario" required>
+                            </div>
+                        </div>
+
+                        <div class="campo-fila">
+                            <div class="campo-grupo">
+                                <label>Tipo de Estudiante</label>
+                                <select id="tipoEstudiante" required>
+                                    <option value="">Elegir...</option>
+                                    <option value="pre">Pre-Universitario</option>
+                                    <option value="uni">Universitario</option>
+                                </select>
+                            </div>
+
+                            <div class="campo-grupo" id="grupoDinamico1">
+                                <label id="labelDinamico1">Área</label>
+                                <select id="selectDinamico1" disabled>
+                                    <option value="">Selecciona tipo...</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="campo-grupo" id="grupoDinamico2" style="display: none;">
+                            <label>Carrera a Postular</label>
+                            <select id="selectCarreraPre">
+                                <option value="">Elige área primero...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Fila Inferior: Correo y Contraseña -->
+                <div class="campo-fila" style="margin-top: 12px;">
+                    <div class="campo-grupo">
+                        <label>Correo Electrónico</label>
+                        <input type="email" id="correo" placeholder="tucorreo@gmail.com" required>
+                    </div>
+                    <div class="campo-grupo">
+                        <label>Contraseña</label>
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-crear">Crear Cuenta</button>
+            </form>
+
+            <div class="enlace-pie">
+                ¿Ya tienes cuenta? <a href="01_html/02_login.html">Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de autenticación -->
+    <script src="03_js/02_auth.js"></script>
+</body>
+</html>

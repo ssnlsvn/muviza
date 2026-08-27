@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Lumis</title>
+    <!-- Ruta de los estilos desde la carpeta 01_html hacia fuera -->
+    <link rel="stylesheet" href="../02_css/01_estilos_generales.css">
+    <link rel="stylesheet" href="../02_css/02_autenticacion.css">
+</head>
+<body>
+
+    <div class="ventana-retro">
+        <!-- Barra superior estilo app retro -->
+        <div class="barra-titulo">
+            <div class="puntos-ventana">
+                <span class="punto punto-rojo"></span>
+                <span class="punto punto-amarillo"></span>
+                <span class="punto punto-verde"></span>
+            </div>
+            <span class="titulo-exe">=^.^=.exe</span>
+            <div></div>
+        </div>
+
+        <div class="contenido-formulario">
+            
+            <!-- Panel superior: 3 Temas + Botón Modo Oscuro -->
+            <div class="panel-superior">
+                <div class="selector-temas-container">
+                    <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-titulo);">Tema:</span>
+                    <div class="circulo-tema activo" data-tema="mint" title="Mint Choco" style="background-color: #8ab6b1;"></div>
+                    <div class="circulo-tema" data-tema="waterfall" title="Waterfall" style="background-color: #81a1c1;"></div>
+                    <div class="circulo-tema" data-tema="prim" title="Prim" style="background-color: #f3c2d3;"></div>
+                </div>
+                
+                <button type="button" id="btnModoOscuro" class="switch-modo-oscuro">
+                    <span id="iconoModo">🌙</span> <span id="textoModo">Modo Oscuro: OFF</span>
+                </button>
+            </div>
+
+            <h2 class="titulo-principal">Iniciar Sesión</h2>
+
+            <!-- Botón Ingresar con Google -->
+            <button type="button" id="btnGoogleLogin" class="btn-google">
+                Continuar con Google
+            </button>
+
+            <div class="divisor"><span>o con tu correo</span></div>
+
+            <form id="formLogin">
+                <div class="campo-grupo" style="margin-bottom: 15px;">
+                    <label>Correo Electrónico</label>
+                    <input type="email" id="loginCorreo" placeholder="tucorreo@gmail.com" required>
+                </div>
+
+                <div class="campo-grupo" style="margin-bottom: 10px;">
+                    <label>Contraseña</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+
+                <!-- Enlace de recuperación de contraseña -->
+                <div style="text-align: right; margin-bottom: 20px;">
+                    <a href="#" id="linkRecuperar" style="font-size: 0.75rem; color: var(--color-titulo); text-decoration: none;">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-crear">Ingresar</button>
+            </form>
+
+            <div class="enlace-pie">
+                ¿No tienes cuenta? <a href="../index.html">Regístrate aquí</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de lógica para el Login -->
+    <script src="../03_js/03_login.js"></script>
+</body>
+</html>

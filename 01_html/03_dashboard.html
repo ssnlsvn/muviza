@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Principal - Lumis</title>
+    <!-- Rutas saliendo de la carpeta 01_html -->
+    <link rel="stylesheet" href="../02_css/01_estilos_generales.css">
+    <link rel="stylesheet" href="../02_css/03_dashboard.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        <!-- BARRA LATERAL (SIDEBAR) -->
+        <aside class="sidebar-retro">
+            <div class="logo-area">
+                <span class="logo-icon">✨</span>
+                <span class="logo-text">Lumis</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="nav-item activo" data-seccion="inicio">🏠 Inicio</a>
+                <a href="#" class="nav-item" data-seccion="calendario">📅 Calendario</a>
+                <a href="#" class="nav-item" data-seccion="horario">⏰ Horario</a>
+                <a href="#" class="nav-item" data-seccion="bitacora">📖 Bitácora</a>
+                <a href="#" class="nav-item" data-seccion="pomodoro">⏳ Pomodoro</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="btnLogout" class="btn-salir">Cerrar Sesión</button>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <!-- HEADER SUPERIOR -->
+            <header class="header-dashboard">
+                <div class="panel-superior-dashboard">
+                    <div class="selector-temas-container">
+                        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-titulo);">Tema:</span>
+                        <div class="circulo-tema activo" data-tema="mint" title="Mint Choco" style="background-color: #8ab6b1;"></div>
+                        <div class="circulo-tema" data-tema="waterfall" title="Waterfall" style="background-color: #81a1c1;"></div>
+                        <div class="circulo-tema" data-tema="prim" title="Prim" style="background-color: #f3c2d3;"></div>
+                    </div>
+                    
+                    <button type="button" id="btnModoOscuro" class="switch-modo-oscuro">
+                        <span id="iconoModo">🌙</span> <span id="textoModo">Modo Oscuro: OFF</span>
+                    </button>
+                </div>
+
+                <!-- TARJETA DE PERFIL DINÁMICA -->
+                <div class="card-perfil-header" id="cardPerfilHeader">
+                    <div class="avatar-container">
+                        <img id="perfilAvatar" src="" alt="Foto" style="display:none; width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                        <div id="avatarFallback" class="avatar-fallback">👤</div>
+                    </div>
+                    <div class="info-usuario">
+                        <div class="linea-nombre-handle">
+                            <h3 id="perfilNombre">Cargando...</h3>
+                            <span id="perfilHandle" class="badge-handle">@usuario</span>
+                        </div>
+                        <p id="perfilDetalleCarrera" class="detalle-carrera">Cargando carrera...</p>
+                        <span id="perfilId" class="badge-id">ID: #000000</span>
+                    </div>
+                    <button id="btnEditarHandle" class="btn-editar-handle" title="Editar @ (cada 30 días)">✏️</button>
+                </div>
+            </header>
+
+            <!-- VISTA DINÁMICA DE CONTENIDO -->
+            <section class="vista-contenedor" id="vistaContenido">
+                <div class="tarjeta-modulo">
+                    <h2>¡Bienvenida a tu espacio de estudio! 🌸</h2>
+                    <p style="margin-top: 10px; opacity: 0.8;">Aquí tienes la vista previa de tu día y tus accesos rápidos organizados.</p>
+                    
+                    <div class="preview-dia-box" style="margin-top: 20px; padding: 20px; background: var(--bg-principal); border-radius: 10px; border: 1px dashed var(--color-borde);">
+                        <h4 style="color: var(--color-titulo);">📅 Vista Previa del Día Actual</h4>
+                        <p id="fechaHoy" style="font-size: 0.9rem; margin-top: 5px;"></p>
+                        <div style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">
+                            • No hay tareas pendientes para hoy. ¡Disfruta tu jornada de estudio! ✨
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script del Dashboard -->
+    <script src="../03_js/04_dashboard.js"></script>
+</body>
+</html>

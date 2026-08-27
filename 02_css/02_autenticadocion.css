@@ -1,0 +1,256 @@
+/* ========================================== */
+/* DISEÑO DE LA VENTANA RETRO Y FORMULARIO    */
+/* ========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-principal);
+  color: var(--color-texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.ventana-retro {
+  background-color: var(--bg-tarjeta);
+  border: 2px solid var(--color-borde);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  overflow: hidden;
+  padding-bottom: 30px;
+}
+
+.barra-titulo {
+  background-color: var(--color-borde);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.puntos-ventana {
+  display: flex;
+  gap: 6px;
+}
+
+.punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.punto-rojo { background-color: #ff5f56; }
+.punto-amarillo { background-color: #ffbd2e; }
+.punto-verde { background-color: #27c93f; }
+
+.titulo-exe {
+  font-size: 0.85rem;
+  color: var(--color-texto);
+  opacity: 0.7;
+  font-family: monospace;
+}
+
+.contenido-formulario {
+  padding: 25px 40px;
+}
+
+h2.titulo-principal {
+  text-align: center;
+  color: var(--color-titulo);
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.panel-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background: var(--bg-principal);
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--color-borde);
+}
+
+.selector-temas-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.circulo-tema {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-borde);
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.circulo-tema:hover {
+  transform: scale(1.15);
+}
+
+.circulo-tema.activo {
+  border-color: var(--color-titulo);
+  box-shadow: 0 0 0 2px var(--color-acento);
+}
+
+.switch-modo-oscuro {
+  background-color: var(--bg-tarjeta);
+  border: 1px solid var(--color-borde);
+  color: var(--color-titulo);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.switch-modo-oscuro.activo {
+  background-color: var(--color-titulo);
+  color: var(--color-btn-texto);
+}
+
+.btn-google {
+  width: 100%;
+  background-color: var(--bg-principal);
+  border: 1px dashed var(--color-titulo);
+  color: var(--color-titulo);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.divisor {
+  text-align: center;
+  margin: 18px 0;
+  font-size: 0.85rem;
+  color: var(--color-texto);
+  opacity: 0.6;
+  border-bottom: 1px dashed var(--color-borde);
+  line-height: 0.1em;
+}
+
+.divisor span {
+  background: var(--bg-tarjeta);
+  padding: 0 10px;
+}
+
+.grid-formulario {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.seccion-foto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.caja-foto {
+  width: 120px;
+  height: 120px;
+  border: 2px dashed var(--color-borde);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-principal);
+  color: var(--color-texto);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.btn-foto {
+  background-color: var(--bg-principal);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.campos-derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.campo-fila {
+  display: flex;
+  gap: 12px;
+}
+
+.campo-grupo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-titulo);
+}
+
+input, select {
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-borde);
+  background-color: var(--bg-principal);
+  color: var(--color-texto);
+  font-size: 0.85rem;
+  outline: none;
+  width: 100%;
+}
+
+.btn-crear {
+  width: 100%;
+  background-color: var(--color-btn-fondo);
+  color: var(--color-btn-texto);
+  border: none;
+  padding: 13px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.enlace-pie {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 0.85rem;
+}
+
+.enlace-pie a {
+  color: var(--color-titulo);
+  text-decoration: none;
+  font-weight: bold;
+}
