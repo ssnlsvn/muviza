@@ -254,3 +254,61 @@ input, select {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* ========================================== */
+/* DISEÑO RESPONSIVE Y CENTRADO MÓVIL         */
+/* ========================================== */
+@media screen and (max-width: 768px) {
+  body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    padding: 10px !important;
+    margin: 0 !important;
+  }
+
+  .ventana-retro {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .contenido-formulario {
+    padding: 15px 15px !important;
+  }
+
+  .grid-formulario {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .campo-fila {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+}
+/* ========================================== */
+/* FORZAR CENTRADO ABSOLUTO EN MÓVILES        */
+/* ========================================== */
+@media screen and (max-width: 768px) {
+  html, body {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  .ventana-retro {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}

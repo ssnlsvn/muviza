@@ -40,19 +40,12 @@
 
             <h2 class="titulo-principal">Nuevo Estudiante</h2>
 
-            <!-- Botón de Google -->
-            <button type="button" id="btnGoogle" class="btn-google">
-                Registrarse con Google
-            </button>
-
-            <div class="divisor"><span>o manualmente</span></div>
-
             <form id="formRegistro">
                 <div class="grid-formulario">
                     
-                    <!-- Columna Izquierda: Foto -->
+                    <!-- Columna Izquierda: Foto con Previsualización -->
                     <div class="seccion-foto">
-                        <div class="caja-foto" id="cajaFoto">
+                        <div class="caja-foto" id="cajaFoto" style="overflow: hidden; cursor: pointer;">
                             📷 <br><span>Sube tu foto</span>
                         </div>
                         <input type="file" id="inputFoto" accept="image/*" style="display: none;">
@@ -90,7 +83,7 @@
                             </div>
                         </div>
 
-                        <div class="campo-grupo" id="grupoDinamico2" style="display: none;">
+                        <div class="campo-grupo" id="contenedorCarreraPre" style="display: none; margin-top: 5px;">
                             <label>Carrera a Postular</label>
                             <select id="selectCarreraPre">
                                 <option value="">Elige área primero...</option>
