@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     // 1. Lógica para los selectores de tipo de estudiante y carreras de San Marcos
     const tipoEstudiante = document.getElementById("tipoEstudiante");
-    const contenedorDinamico = document.getElementById("contenedorDinamico");
-    const contenedorCarreraPre = document.getElementById("contenedorCarreraPre");
     const selectDinamico1 = document.getElementById("selectDinamico1");
+    const contenedorCarreraPre = document.getElementById("contenedorCarreraPre");
     const selectCarreraPre = document.getElementById("selectCarreraPre");
 
     const carrerasSanMarcos = {
@@ -17,18 +16,29 @@ document.addEventListener("DOMContentLoaded", () => {
     if (tipoEstudiante) {
         tipoEstudiante.addEventListener("change", (e) => {
             const valor = e.target.value;
+            selectDinamico1.removeAttribute("disabled");
+            
             if (valor === "pre") {
-                contenedorDinamico.style.display = "block";
                 contenedorCarreraPre.style.display = "block";
-                actualizarCarrerasPre("A");
+                llenarAreasPre();
             } else if (valor === "uni") {
-                contenedorDinamico.style.display = "block";
                 contenedorCarreraPre.style.display = "none";
                 llenarCarrerasUniversitarias();
             } else {
-                contenedorDinamico.style.display = "none";
+                selectDinamico1.setAttribute("disabled", "true");
+                selectDinamico1.innerHTML = '<option value="">Selecciona tipo...</option>';
                 contenedorCarreraPre.style.display = "none";
             }
+        });
+    }
+
+    function llenarAreasPre() {
+        selectDinamico1.innerHTML = '<option value="">Selecciona Área...</option>';
+        Object.keys(carrerasSanMarcos).forEach(area => {
+            const opt = document.createElement("option");
+            opt.value = area;
+            opt.textContent = `Área ${area}`;
+            selectDinamico1.appendChild(opt);
         });
     }
 
@@ -53,8 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function llenarCarrerasUniversitarias() {
-        if (!selectDinamico1) return;
-        selectDinamico1.innerHTML = "";
+        selectDinamico1.innerHTML = '<option value="">Selecciona tu Carrera...</option>';
         Object.keys(carrerasSanMarcos).forEach(area => {
             carrerasSanMarcos[area].forEach(carrera => {
                 const opt = document.createElement("option");
@@ -65,7 +74,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 2. Control de Temas y Modo Oscuro en el Registro
+    // 2. Previsualización de la foto de perfil
+    let fotoBase64 = "";
+    const inputFoto = document.getElementById("inputFoto");
+    const cajaFoto = document.getElementById("cajaFoto");
+
+    if (inputFoto && cajaFoto) {
+        inputFoto.addEventListener("change", (e) => {
+            const archivo = e.target.files[0];
+            if (archivo) {
+                const lector = new FileReader();
+                lector.onload = (evento) => {
+                    fotoBase64 = evento.target.result;
+                    cajaFoto.innerHTML = `<img src="${fotoBase64}" alt="Foto de perfil" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">`;
+                };
+                lector.readAsDataURL(archivo);
+            }
+        });
+    }
+
+    // 3. Control de Temas y Modo Oscuro en el Registro
     let temaActual = "mint";
     let modoOscuroActivo = false;
 
@@ -111,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 3. Validación en tiempo real del @ único en el Registro
+    // 4. Validación en tiempo real del @ único
     const inputHandle = document.getElementById("handle");
     if (inputHandle) {
         const indicadorHandle = document.createElement("div");
@@ -143,18 +171,27 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. Envío del formulario de Registro
+    // 5. Envío del formulario de Registro
     const formRegistro = document.getElementById("formRegistro");
     if (formRegistro) {
         formRegistro.addEventListener("submit", (e) => {
             e.preventDefault();
 
             const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuariosLumis")) || [];
+            
             const handleIngresado = document.getElementById("handle").value.trim();
             const handleConArroba = handleIngresado.startsWith("@") ? handleIngresado : "@" + handleIngresado;
+            const correoIngresado = document.getElementById("correo").value.trim().toLowerCase();
 
+            // 1. Verificar si el @ ya está ocupado
             if (listaUsuarios.some(u => u.handle.toLowerCase() === handleConArroba.toLowerCase())) {
-                alert("❌ Ese nombre de usuario (@) ya está ocupado por otra persona. Elige otro.");
+                alert("❌ Ese nombre de usuario (@) ya está ocupado. Elige otro.");
+                return;
+            }
+
+            // 2. Verificar si el correo electrónico ya está registrado previamente
+            if (listaUsuarios.some(u => u.correo.toLowerCase() === correoIngresado)) {
+                alert("❌ Este correo electrónico ya tiene una cuenta asociada en Lumis. Por favor, inicia sesión o utiliza otro correo.");
                 return;
             }
 
@@ -164,11 +201,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: idUnico,
                 nombre: document.getElementById("nombre").value,
                 handle: handleConArroba,
-                correo: document.getElementById("correo").value,
+                correo: correoIngresado,
                 password: document.getElementById("password").value,
                 tipo: tipoEstudiante.value,
                 area: tipoEstudiante.value === "pre" ? selectDinamico1.value : "",
                 carrera: tipoEstudiante.value === "pre" ? selectCarreraPre.value : selectDinamico1.value,
+                foto: fotoBase64 || "",
                 tema: temaActual,
                 modoOscuro: modoOscuroActivo,
                 ultimoCambioHandle: new Date().getTime()
@@ -179,7 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("usuarioLumis", JSON.stringify(usuarioData));
 
             alert("✨ ¡Registro exitoso! Bienvenido a Lumis.");
-            window.location.href = "../01_html/03_dashboard.html";
+            window.location.href = "01_html/03_dashboard.html";
         });
     }
-});
+}); // <-- ¡Aquí faltaba cerrar el addEventListener principal!

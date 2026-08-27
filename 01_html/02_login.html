@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión - Lumis</title>
-    <!-- Rutas corregidas saliendo de la carpeta 01_html -->
+    <!-- Rutas de estilos -->
     <link rel="stylesheet" href="../02_css/01_estilos_generales.css">
     <link rel="stylesheet" href="../02_css/02_autenticacion.css">
 </head>
@@ -40,13 +40,7 @@
 
             <h2 class="titulo-principal">Iniciar Sesión</h2>
 
-            <!-- Botón de Google -->
-            <button type="button" id="btnGoogleLogin" class="btn-google">
-                Continuar con Google
-            </button>
-
-            <div class="divisor"><span>o con tu correo</span></div>
-
+            <!-- Formulario de Acceso por Correo -->
             <form id="formLogin">
                 <div class="campo-grupo" style="margin-bottom: 15px;">
                     <label>Correo Electrónico</label>
@@ -58,9 +52,9 @@
                     <input type="password" id="loginPassword" placeholder="••••••••" required>
                 </div>
 
-                <!-- Enlace de recuperación de contraseña -->
+                <!-- Enlace de recuperación de contraseña por código -->
                 <div style="text-align: right; margin-bottom: 20px;">
-                    <a href="#" id="linkRecuperar" style="font-size: 0.75rem; color: var(--color-titulo); text-decoration: none; font-weight: bold;">¿Olvidaste tu contraseña?</a>
+                    <a href="#" id="linkRecuperar" style="font-size: 0.75rem; color: var(--color-titulo); text-decoration: none; font-weight: bold;">¿Olvidaste tu contraseña? (Recuperar con código)</a>
                 </div>
 
                 <button type="submit" class="btn-crear">Ingresar</button>

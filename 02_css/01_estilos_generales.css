@@ -331,24 +331,32 @@ input, select {
 }
 
 /* ========================================== */
-/* DISEÑO RESPONSIVE PERFECTO PARA MÓVILES    */
+/* DISEÑO RESPONSIVE Y CENTRADO MÓVIL UNIFICADO*/
 /* ========================================== */
 
 @media screen and (max-width: 768px) {
   body {
-    padding: 8px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 100vh !important;
+    padding: 10px !important;
+    margin: 0 !important;
   }
 
   .ventana-retro {
+    width: 100% !important;
     max-width: 100% !important;
+    margin: 0 auto !important;
     border-radius: 8px;
+    box-sizing: border-box !important;
   }
 
   .contenido-formulario {
     padding: 15px 15px !important;
   }
 
-  /* Apilar el panel superior (temas y modo oscuro) si es muy angosto */
+  /* Apilar el panel superior (temas y modo oscuro) */
   .panel-superior {
     flex-direction: column;
     gap: 10px;
@@ -380,7 +388,7 @@ input, select {
     height: 100px;
   }
 
-  /* Apilar las filas de inputs dobles (ej. Nombre y @) uno debajo del otro */
+  /* Apilar las filas de inputs dobles uno debajo del otro */
   .campo-fila {
     flex-direction: column !important;
     gap: 12px !important;
