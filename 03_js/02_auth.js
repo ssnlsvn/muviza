@@ -178,11 +178,20 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuariosLumis")) || [];
+            
             const handleIngresado = document.getElementById("handle").value.trim();
             const handleConArroba = handleIngresado.startsWith("@") ? handleIngresado : "@" + handleIngresado;
+            const correoIngresado = document.getElementById("correo").value.trim().toLowerCase();
 
+            // 1. Verificar si el @ ya está ocupado
             if (listaUsuarios.some(u => u.handle.toLowerCase() === handleConArroba.toLowerCase())) {
                 alert("❌ Ese nombre de usuario (@) ya está ocupado. Elige otro.");
+                return;
+            }
+
+            // 2. Verificar si el correo electrónico ya está registrado previamente
+            if (listaUsuarios.some(u => u.correo.toLowerCase() === correoIngresado)) {
+                alert("❌ Este correo electrónico ya tiene una cuenta asociada en Lumis. Por favor, inicia sesión o utiliza otro correo.");
                 return;
             }
 
@@ -192,12 +201,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 id: idUnico,
                 nombre: document.getElementById("nombre").value,
                 handle: handleConArroba,
-                correo: document.getElementById("correo").value,
+                correo: correoIngresado,
                 password: document.getElementById("password").value,
                 tipo: tipoEstudiante.value,
                 area: tipoEstudiante.value === "pre" ? selectDinamico1.value : "",
                 carrera: tipoEstudiante.value === "pre" ? selectCarreraPre.value : selectDinamico1.value,
-                foto: fotoBase64 || "", // Guardamos la foto en formato Base64
+                foto: fotoBase64 || "",
                 tema: temaActual,
                 modoOscuro: modoOscuroActivo,
                 ultimoCambioHandle: new Date().getTime()
@@ -211,4 +220,4 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "01_html/03_dashboard.html";
         });
     }
-});
+}); // <-- ¡Aquí faltaba cerrar el addEventListener principal!

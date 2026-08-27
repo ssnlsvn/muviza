@@ -112,17 +112,30 @@
   padding: 8px 15px;
   border-radius: 10px;
   border: 1px solid var(--color-borde);
+  flex-wrap: wrap; /* Evita que los elementos se aprieten a la fuerza */
 }
 
 .avatar-container {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important; /* ¡Esto evita que se aplaste! */
+  min-height: 50px !important;
+  border-radius: 50% !important;
   background: var(--color-borde);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  flex-shrink: 0 !important; /* Prohíbe que el navegador la comprima */
+}
+
+.avatar-container img, #perfilAvatar {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
 }
 
 .avatar-fallback {
@@ -253,4 +266,90 @@
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
+}
+/* ========================================== */
+/* DISEÑO RESPONSIVE LIMPIO Y FLUIDO MÓVIL    */
+/* ========================================== */
+@media screen and (max-width: 768px) {
+  /* Permitir scroll vertical total en el celular */
+  .app-layout {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* El sidebar se vuelve un bloque superior organizado */
+  .sidebar-retro {
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 12px 15px !important;
+    border-right: none !important;
+    border-bottom: 2px solid var(--color-borde) !important;
+    gap: 10px !important;
+  }
+
+  .logo-area {
+    margin-bottom: 0 !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+  }
+
+  /* El menú se convierte en una barra horizontal deslizable sin apachurrarse */
+  .nav-menu {
+    flex-direction: row !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 4px;
+    width: 100%;
+  }
+
+  .nav-item {
+    padding: 6px 12px !important;
+    font-size: 0.8rem !important;
+    flex-shrink: 0;
+  }
+
+  /* Ocultamos el pie de barra lateral por espacio, o lo adaptamos si prefieres */
+  .sidebar-footer {
+    display: none !important;
+  }
+
+  /* Área principal fluida */
+  .main-content {
+    padding: 12px !important;
+    overflow-y: visible !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Header y tarjeta de perfil apilados verticalmente y con buen espacio */
+  .header-dashboard {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 12px !important;
+  }
+
+  .panel-superior-dashboard {
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+
+  .card-perfil-header {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Contenido y tarjetas internas con holgura */
+  .tarjeta-modulo {
+    padding: 15px !important;
+  }
+
+  h2.titulo-principal, .tarjeta-modulo h2 {
+    font-size: 1.3rem !important;
+  }
 }
